@@ -1,0 +1,10 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    background-color: darkslateblue;
+    color: white;
+    font-family: Poppins, Arial, Helvetica, sans-serif;
+}
