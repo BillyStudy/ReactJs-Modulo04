@@ -7,4 +7,12 @@ body {
     background-color: darkslateblue;
     color: white;
     font-family: Poppins, Arial, Helvetica, sans-serif;
+    padding: 30px;
+    padding-top: 20px;
+}
+
+.logo{
+    width: 80px;
+    border-radius: 1000px;
+    box-shadow: 1px 1px 3px black;
 }
