@@ -15,4 +15,5 @@ body {
     width: 80px;
     border-radius: 1000px;
     box-shadow: 1px 1px 3px black;
+    align-self: center;
 }
