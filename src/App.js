@@ -7,7 +7,10 @@ function App(){
 
     return (
         <>
-            <img src={logo} className="logo" />
+            <div className="logoDiv">
+                <img src={logo} className="logo" />
+                <h1>RocketSeat</h1>
+            </div>
             <TechList/>
         </>
     )

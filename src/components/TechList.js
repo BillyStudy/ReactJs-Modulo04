@@ -7,8 +7,10 @@ export default class TechList extends Component{
     
     state = {
         newTech:'',
-        techs: ['NodeJS', 'ReactJS', 'React-Native']
+        techs: []
     }
+
+
     handleInputChange = e => {
         this.setState({ newTech: e.target.value });
     }
@@ -26,15 +28,37 @@ export default class TechList extends Component{
         this.setState({ techs: this.state.techs.filter(t => t !== tech)})
     }
 
+    // Executa sempre que o componente é alterado
+    componentDidMount(){
+        const techs = localStorage.getItem('techs');
+        if (techs) {
+            this.setState({ techs : JSON.parse(techs)});
+        }
+    }
+
+    // Executa sempre que o componente é alterado
+    componentDidUpdate(_, prevState){
+        if (prevState.techs !== this.state.techs) {
+            localStorage.setItem('techs', JSON.stringify(this.state.techs));
+        }
+    }
+
+    // Executa quando o componente deixa de existir
+    componentWillUnmount(){
+        
+    }
+
     render(){
         return(
-            <form onSubmit={this.handleSubmit} className="formList">
-                <ul className="list">
-                    {this.state.techs.map(tech => <TechItem tech={tech} key={tech} onDelete={() => this.handleDelete(tech)}/>)}
-                </ul>
-                <input type="text" onChange={this.handleInputChange} maxLength={20} value={this.state.newTech} />
-                <button type="submit" className="button">Adicionar</button>
-            </form>
+            <div className="divFormList">
+                <form onSubmit={this.handleSubmit} className="formList">
+                    <ul className="list">
+                        {this.state.techs.map(tech => <TechItem tech={tech} key={tech} onDelete={() => this.handleDelete(tech)}/>)}
+                    </ul>
+                    <input type="text" onChange={this.handleInputChange} maxLength={20} value={this.state.newTech} />
+                    <button type="submit" className="button">Adicionar</button>
+                </form>
+            </div>
         )
     }
 }
